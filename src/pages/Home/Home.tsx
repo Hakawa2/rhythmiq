@@ -17,6 +17,7 @@ export function Home() {
     toggleType,
     debouncedSearch,
     isQueryEnabled,
+    clean,
   } = useSearchController();
 
   const { data, isLoading, isError, isEmpty } = useSearchQuery(
@@ -45,6 +46,7 @@ export function Home() {
         onSearchChange={setSearch}
         type={type}
         onTypeToggle={toggleType}
+        onClean={clean}
       />
       <SearchHandler isEmpty={isEmpty} isLoading={isLoading} isError={isError}>
         <div className="flex flex-wrap gap-4 md:gap-10">

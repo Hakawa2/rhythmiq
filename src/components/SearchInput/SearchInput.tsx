@@ -7,6 +7,7 @@ type SearchInputProps = {
   onSearchChange: (value: string) => void;
   type: SearchType;
   onTypeToggle: () => void;
+  onClean: () => void;
 };
 
 export const SearchInput = ({
@@ -14,6 +15,7 @@ export const SearchInput = ({
   onSearchChange,
   type,
   onTypeToggle,
+  onClean,
 }: SearchInputProps) => {
   return (
     <div className="flex flex-col items-center gap-4 mb-6">
@@ -24,7 +26,7 @@ export const SearchInput = ({
         }...`}
         value={search}
         onChange={(e) => onSearchChange(e.target.value)}
-        className="w-full p-3 rounded-xl text-black placeholder-gray-500 outline-none ring-2 ring-purple-400"
+        className="w-full p-3 rounded-xl text-sm text-white placeholder-gray-500 outline-none ring-2 ring-purple-400"
       />
 
       <div className="flex items-center gap-4 self-end">
@@ -42,10 +44,7 @@ export const SearchInput = ({
             {type === "artists" ? "Artistas" : "Álbuns"}
           </Label>
         </div>
-        <button
-          className="cursor-pointer text-sm text-white"
-          onClick={() => console.log("clean")}
-        >
+        <button className="cursor-pointer text-sm text-white" onClick={onClean}>
           Limpar
         </button>
       </div>

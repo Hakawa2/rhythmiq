@@ -47,6 +47,6 @@ export const useSearchController = (queryLimit = 2) => {
     toggleType: () => dispatch({ type: "TOGGLE_TYPE" }),
     clean: () => dispatch({ type: "CLEAN" }),
     debouncedSearch,
-    isQueryEnabled: debouncedSearch.length > queryLimit,
+    isQueryEnabled: debouncedSearch.length >= queryLimit,
   };
 };
