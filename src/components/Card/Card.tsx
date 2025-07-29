@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 type CardProps = {
   name: string;
   image: string;
-  description: number;
+  description: string;
   url: string;
   ariaLabel: string;
 };

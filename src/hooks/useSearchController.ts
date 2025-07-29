@@ -9,7 +9,8 @@ type SearchState = {
 
 type SearchAction =
   | { type: "SET_QUERY"; payload: string }
-  | { type: "TOGGLE_TYPE" };
+  | { type: "TOGGLE_TYPE" }
+  | { type: "CLEAN" };
 
 const reducer = (state: SearchState, action: SearchAction): SearchState => {
   switch (action.type) {
@@ -17,8 +18,13 @@ const reducer = (state: SearchState, action: SearchAction): SearchState => {
       return { ...state, query: action.payload };
     case "TOGGLE_TYPE":
       return {
-        ...state,
+        query: "",
         type: state.type === "artists" ? "albums" : "artists",
+      };
+    case "CLEAN":
+      return {
+        ...state,
+        query: "",
       };
     default:
       return state;
@@ -39,6 +45,7 @@ export const useSearchController = (queryLimit = 2) => {
       dispatch({ type: "SET_QUERY", payload: value }),
     type: state.type,
     toggleType: () => dispatch({ type: "TOGGLE_TYPE" }),
+    clean: () => dispatch({ type: "CLEAN" }),
     debouncedSearch,
     isQueryEnabled: debouncedSearch.length > queryLimit,
   };

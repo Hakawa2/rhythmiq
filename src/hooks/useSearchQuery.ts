@@ -1,5 +1,5 @@
-import { searchFunctionsMap } from "@/services/search-service";
-import type { ListItem } from "@/types/list-type";
+import { searchFunctionsMap } from "@/services";
+import type { List } from "@/types/list-type";
 import type { SearchType } from "@/types/search-types";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
 
@@ -9,13 +9,15 @@ type UseSearchQueryOptions = {
 
 export const useSearchQuery = (
   query: string,
-  type: SearchType = "artists",
+  offset: string = "0",
+  type: SearchType,
   options?: UseSearchQueryOptions
-): UseQueryResult<ListItem[], Error> & { isEmpty: boolean } => {
-  const queryFn = () => searchFunctionsMap[type](query) as Promise<ListItem[]>;
+): UseQueryResult<List, Error> & { isEmpty: boolean } => {
+  const queryFn = () =>
+    searchFunctionsMap[type](query, offset) as Promise<List>;
 
   const queryResult = useQuery({
-    queryKey: [type, query],
+    queryKey: [type, query, offset],
     queryFn,
     enabled: options?.enabled ?? true,
     staleTime: 1000 * 60 * 5,

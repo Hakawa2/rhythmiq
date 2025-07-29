@@ -27,15 +27,27 @@ export const SearchInput = ({
         className="w-full p-3 rounded-xl text-black placeholder-gray-500 outline-none ring-2 ring-purple-400"
       />
 
-      <div className="flex items-center gap-2 self-end">
-        <Switch
-          id="search-type"
-          checked={type === "albums"}
-          onCheckedChange={onTypeToggle}
-        />
-        <Label htmlFor="search-type" className="text-sm text-white">
-          {type === "artists" ? "Artistas" : "Álbuns"}
-        </Label>
+      <div className="flex items-center gap-4 self-end">
+        <div className="flex items-center gap-2">
+          <Switch
+            id="search-type"
+            className="cursor-pointer"
+            checked={type === "albums"}
+            onCheckedChange={onTypeToggle}
+          />
+          <Label
+            htmlFor="search-type"
+            className="cursor-pointer text-sm text-white"
+          >
+            {type === "artists" ? "Artistas" : "Álbuns"}
+          </Label>
+        </div>
+        <button
+          className="cursor-pointer text-sm text-white"
+          onClick={() => console.log("clean")}
+        >
+          Limpar
+        </button>
       </div>
     </div>
   );

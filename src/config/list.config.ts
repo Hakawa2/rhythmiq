@@ -16,5 +16,5 @@ export const listConfig = {
       className: "h-4",
     },
   ],
-  quantity: 12,
+  quantity: 20,
 };
