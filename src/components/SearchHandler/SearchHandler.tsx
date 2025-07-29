@@ -14,9 +14,8 @@ export const SearchHandler = <T,>({
   isError,
   isEmpty,
   children,
-  type = "list",
 }: SearchHandlerProps<T>) => {
-  if (isLoading) return type === "list" ? <ListLoading /> : "";
+  if (isLoading) return <ListLoading />;
   if (isError) return <p>Erro ao carregar dados 😢</p>;
   if (isEmpty) return <p>Nenhum Resultado foi encontrado 😢</p>;
   return <>{children}</>;

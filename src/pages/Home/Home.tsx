@@ -1,9 +1,9 @@
+import { Card } from "@/components/Card/Card";
 import { SearchHandler } from "@/components/SearchHandler/SearchHandler";
 import { SearchInput } from "@/components/SearchInput/SearchInput";
-import { Artists } from "@/features/Artists/Artists";
-import type { Artist } from "@/features/Artists/types";
 import { useSearchController } from "@/hooks/useSearchController";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
+import type { ListItem } from "@/types/list-type";
 
 export function Home() {
   const {
@@ -25,8 +25,6 @@ export function Home() {
     }
   );
 
-  console.log("data", data);
-
   return (
     <>
       <SearchInput
@@ -41,7 +39,19 @@ export function Home() {
         isError={isError}
         type="list"
       >
-        <Artists data={data as Artist[]} />
+        <div className="flex flex-wrap gap-4 md:gap-10">
+          {data &&
+            data.map((result: ListItem) => (
+              <Card
+                key={result.id}
+                image={result.image}
+                name={result.name}
+                ariaLabel={result.ariaLabel}
+                description={result.description}
+                url={result.uri}
+              />
+            ))}
+        </div>
       </SearchHandler>
     </>
   );

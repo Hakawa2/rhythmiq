@@ -1,7 +1,8 @@
-import type { Artist, RawArtist } from "@/features/Artists/types";
 import apiSpotify from "@/lib/apiSpotify";
+import type { ListItem, RawListItem } from "@/types/list-type";
+import { formatDate } from "@/utils/format-date.utils";
 
-export const searchArtists = async (query: string): Promise<Artist[]> => {
+export const searchArtists = async (query: string): Promise<ListItem[]> => {
   const res = await apiSpotify.get(`/search`, {
     params: {
       q: query,
@@ -9,30 +10,36 @@ export const searchArtists = async (query: string): Promise<Artist[]> => {
     },
   });
 
-  return (res.data.artists.items || []).map((artist: RawArtist) => ({
+  return (res.data.artists.items || []).map((artist: RawListItem) => ({
     id: artist.id,
     name: artist.name,
     image: artist.images[0]?.url ?? "https://placehold.co/512x512",
-    popularity: artist.popularity,
+    ariaLabel: `Artista ${artist.name}`,
+    description: `Seguidores ${artist.followers?.total}`,
     uri: `artist/${artist.id}`,
   }));
 };
 
-export const searchAlbums = async (query: string): Promise<Artist[]> => {
-  const res = await apiSpotify.get(`/search`, {
-    params: {
-      q: query,
-      type: "album",
-    },
-  });
+export const searchAlbums = async (query: string): Promise<ListItem[]> => {
+  try {
+    const res = await apiSpotify.get(`/search`, {
+      params: {
+        q: query,
+        type: "album",
+      },
+    });
 
-  return (res.data.artists.items || []).map((artist: RawArtist) => ({
-    id: artist.id,
-    name: artist.name,
-    image: artist.images[0]?.url ?? "https://placehold.co/512x512",
-    popularity: artist.popularity,
-    uri: `artist/${artist.id}`,
-  }));
+    return (res.data.albums.items || []).map((album: RawListItem) => ({
+      id: album.id,
+      name: album.name,
+      image: album.images[0]?.url ?? "https://placehold.co/512x512",
+      ariaLabel: `Album ${album.name}`,
+      description: `Data de lançamento: ${formatDate(album.release_date)}`,
+      uri: `album/${album.id}`,
+    }));
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const searchFunctionsMap = {
