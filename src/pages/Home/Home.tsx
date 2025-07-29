@@ -15,8 +15,6 @@ export function Home() {
     isQueryEnabled,
   } = useSearchController();
 
-  console.log(type);
-
   const { data, isLoading, isError, isEmpty } = useSearchQuery(
     debouncedSearch,
     type,
@@ -33,12 +31,7 @@ export function Home() {
         type={type}
         onTypeToggle={toggleType}
       />
-      <SearchHandler
-        isEmpty={isEmpty}
-        isLoading={isLoading}
-        isError={isError}
-        type="list"
-      >
+      <SearchHandler isEmpty={isEmpty} isLoading={isLoading} isError={isError}>
         <div className="flex flex-wrap gap-4 md:gap-10">
           {data &&
             data.map((result: ListItem) => (

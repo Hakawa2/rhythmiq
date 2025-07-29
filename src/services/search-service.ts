@@ -21,25 +21,21 @@ export const searchArtists = async (query: string): Promise<ListItem[]> => {
 };
 
 export const searchAlbums = async (query: string): Promise<ListItem[]> => {
-  try {
-    const res = await apiSpotify.get(`/search`, {
-      params: {
-        q: query,
-        type: "album",
-      },
-    });
+  const res = await apiSpotify.get(`/search`, {
+    params: {
+      q: query,
+      type: "album",
+    },
+  });
 
-    return (res.data.albums.items || []).map((album: RawListItem) => ({
-      id: album.id,
-      name: album.name,
-      image: album.images[0]?.url ?? "https://placehold.co/512x512",
-      ariaLabel: `Album ${album.name}`,
-      description: `Data de lançamento: ${formatDate(album.release_date)}`,
-      uri: `album/${album.id}`,
-    }));
-  } catch (err) {
-    console.log(err);
-  }
+  return (res.data.albums.items || []).map((album: RawListItem) => ({
+    id: album.id,
+    name: album.name,
+    image: album.images[0]?.url ?? "https://placehold.co/512x512",
+    ariaLabel: `Album ${album.name}`,
+    description: `Data de lançamento: ${formatDate(album.release_date)}`,
+    uri: `album/${album.id}`,
+  }));
 };
 
 export const searchFunctionsMap = {

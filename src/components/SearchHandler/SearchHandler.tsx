@@ -6,7 +6,6 @@ type SearchHandlerProps<T> = {
   isEmpty: boolean;
   data?: T;
   children: React.ReactNode;
-  type: "list" | "details";
 };
 
 export const SearchHandler = <T,>({
