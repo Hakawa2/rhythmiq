@@ -3,7 +3,7 @@ import { ListLoading } from "@/layouts/ListLoading/ListLoading";
 type SearchHandlerProps<T> = {
   isLoading: boolean;
   isError: boolean;
-  isEmpty: boolean;
+  isEmpty?: boolean;
   data?: T;
   children: React.ReactNode;
 };

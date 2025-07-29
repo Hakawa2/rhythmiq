@@ -2,10 +2,10 @@ import apiSpotify from "@/lib/apiSpotify";
 import type { List } from "@/types/list-type";
 import type { SearchConfig } from "@/types/search-types";
 
-export const searchSpotify = async (
+export const searchSpotify = async <T, K>(
   query: string,
   offset: string = "0",
-  config: SearchConfig
+  config: SearchConfig<T, K>
 ): Promise<List> => {
   const res = await apiSpotify.get(`/search`, {
     params: {

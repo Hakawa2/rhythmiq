@@ -1,3 +1,4 @@
+import type { RawAlbumItem, RawArtistItem } from "./common-response-type";
 import type { PaginationType } from "./pagination";
 import type { SearchType } from "./search-types";
 
@@ -17,28 +18,6 @@ export type SpotifyItemResponse<T> = {
 
 export type Artists = SpotifySearchResponse<"artists", RawArtistItem>;
 export type Albums = SpotifySearchResponse<"albums", RawAlbumItem>;
-
-export type RawArtistItem = {
-  followers: {
-    total: number;
-  };
-} & RawCommonItem;
-
-export type RawAlbumItem = {
-  release_date: Date;
-} & RawCommonItem;
-
-export type RawCommonItem = {
-  id: string;
-  name: string;
-  images: RawImages[];
-};
-
-type RawImages = {
-  url: string;
-  height: string;
-  width: string;
-};
 
 export type List = {
   items: ListItem[];

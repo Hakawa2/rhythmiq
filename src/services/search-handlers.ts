@@ -1,10 +1,6 @@
 // handlers.ts
-import type {
-  Albums,
-  Artists,
-  RawAlbumItem,
-  RawArtistItem,
-} from "@/types/list-type";
+import type { RawAlbumItem, RawArtistItem } from "@/types/common-response-type";
+import type { Albums, Artists } from "@/types/list-type";
 import type { SearchConfig } from "@/types/search-types";
 import { formatDate } from "@/utils/format-date.utils";
 import { getPagination } from "@/utils/pagination.utils";
@@ -20,7 +16,7 @@ export const artistHandler: SearchConfig<Artists, RawArtistItem> = {
     image: artist.images[0]?.url ?? defaultImage,
     ariaLabel: `Artista ${artist.name}`,
     description: `Seguidores ${artist.followers?.total}`,
-    uri: `artist/${artist.id}`,
+    uri: `artists/${artist.id}`,
   }),
 };
 
