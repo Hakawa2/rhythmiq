@@ -4,14 +4,19 @@ import { Artists } from "@/pages/Artists/Artists";
 import { Home } from "@/pages/Home/Home";
 import { createBrowserRouter } from "react-router-dom";
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <MainLayout />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: "artists/:id", element: <Artists /> },
+        { path: "albums/:id", element: <Albums /> },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <MainLayout />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: "/artists/:id", element: <Artists /> },
-      { path: "/albums/:id", element: <Albums /> },
-    ],
-  },
-]);
+    basename: import.meta.env.PROD ? "/rhythmiq" : "/",
+  }
+);
