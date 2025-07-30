@@ -7,7 +7,7 @@ export const BackButton = () => {
   return (
     <button
       onClick={() => navigate("/")}
-      className="col-span-2 flex items-start self-start gap-1 text-white hover:text-gray-300 transition"
+      className="col-span-2 flex items-start self-start gap-1 text-white hover:text-gray-300 transition cursor-pointer"
     >
       <ArrowLeft size={32} />
     </button>
