@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 export function Artists() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, isError } = useFindDetails("artists", id ?? "");
-  console.log(data);
 
   return (
     <>
