@@ -5,7 +5,7 @@ export const findDetails = async <T, K>(
   type: string,
   id: string,
   config: DetailsConfig<T, K>
-): Promise<List> => {
+) => {
   const res = await apiSpotify.get(`${type}/${id}`);
 
   return {
@@ -13,10 +13,13 @@ export const findDetails = async <T, K>(
   };
 };
 
-export const findTopTrackDetails = async (id: string) => {
+export const findTopTrackDetails = async <T, K>(
+  id: string,
+  config: DetailsConfig<T, K>
+) => {
   const res = await apiSpotify.get(`artists/${id}/top-tracks`);
 
   return {
-    topTracks: res.data.tracks,
+    topTracks: res.data.tracks.map((item: T) => config.handleItem(item)),
   };
 };

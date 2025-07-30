@@ -1,8 +1,19 @@
 import { Skeleton } from "../ui/skeleton";
 
-export function SkeletonLoading({ containerClassName, skeletons }) {
+type SkeletonLoadingProps = {
+  containerClassName?: string;
+  skeletons: {
+    id: string;
+    className: string;
+  }[];
+};
+
+export function SkeletonLoading({
+  containerClassName,
+  skeletons,
+}: SkeletonLoadingProps) {
   return (
-    <div className={containerClassName} aria-label="carregando">
+    <div className={containerClassName} aria-hidden="true">
       {skeletons.map((skeleton) => (
         <Skeleton
           key={skeleton.id}

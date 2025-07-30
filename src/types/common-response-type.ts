@@ -2,18 +2,28 @@ export type RawArtistItem = {
   followers: {
     total: number;
   };
-  popularity: string;
   genres: string[];
 } & RawCommonItem;
 
 export type RawAlbumItem = {
   release_date: Date;
+  total_tracks: number;
+  tracks: {
+    items: RawTopTrack[];
+  };
 } & RawCommonItem;
 
 export type RawCommonItem = {
   id: string;
   name: string;
   images: RawImages[];
+  popularity: string;
+};
+
+export type RawTopTrack = {
+  id: string;
+  name: string;
+  duration_ms: number;
 };
 
 type RawImages = {

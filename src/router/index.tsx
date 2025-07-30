@@ -1,7 +1,8 @@
+import MainLayout from "@/layouts/MainLayout/MainLayout";
+import { Albums } from "@/pages/Albums/Albums";
+import { Artists } from "@/pages/Artists/Artists";
+import { Home } from "@/pages/Home/Home";
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../layouts/MainLayout/MainLayout";
-import { Artists } from "../pages/Artists/Artists";
-import { Home } from "../pages/Home/Home";
 
 export const router = createBrowserRouter([
   {
@@ -10,6 +11,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "/artists/:id", element: <Artists /> },
+      { path: "/albums/:id", element: <Albums /> },
     ],
   },
 ]);

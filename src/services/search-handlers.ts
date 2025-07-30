@@ -29,7 +29,7 @@ export const albumHandler: SearchConfig<Albums, RawAlbumItem> = {
     image: album.images[0]?.url ?? defaultImage,
     ariaLabel: `Álbum ${album.name}`,
     description: `Data de lançamento: ${formatDate(album.release_date)}`,
-    uri: `album/${album.id}`,
+    uri: `albums/${album.id}`,
   }),
   getPagination: (data) => ({
     previous: getPagination(data.albums.previous),

@@ -1,10 +1,14 @@
-import { albumDetailsHandler, artistDetailsHandler } from "./details-handlers";
+import {
+  albumDetailsHandler,
+  artistDetailsHandler,
+  topTracksDetailsHandler,
+} from "./details-handlers";
 import { findDetails, findTopTrackDetails } from "./details-service";
 
 export const findArtistDetails = async (query: string) => {
   const [artist, topTracks] = await Promise.all([
     findDetails("artists", query, artistDetailsHandler),
-    findTopTrackDetails(query),
+    findTopTrackDetails(query, topTracksDetailsHandler),
   ]);
 
   return {

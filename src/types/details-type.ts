@@ -1,8 +1,21 @@
-export type Details = ArtistDetails | any;
+export type DetailsMap = {
+  artists: ArtistDetails & TopTracksDetails;
+  albums: AlbumDetails;
+};
 
 export type DetailsConfig<TRawItem, Item> = {
-  type: "artists" | "albums";
+  type?: "artists" | "albums";
   handleItem: (item: TRawItem) => Item;
+};
+
+export type AlbumDetails = {
+  id: string;
+  name: string;
+  image: string;
+  popularity: string;
+  description: string;
+  tracksQuantity: string;
+  tracks: Track[];
 };
 
 export type ArtistDetails = {
@@ -12,11 +25,14 @@ export type ArtistDetails = {
   followers: string;
   image: string;
   genres: string;
+};
+
+export type TopTracksDetails = {
   topTracks: Track[];
 };
 
 export type Track = {
   id: string;
-  name: string;
-  duration_ms: string;
+  title: string;
+  subtitle: string;
 };

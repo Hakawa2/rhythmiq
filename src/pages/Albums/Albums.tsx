@@ -4,24 +4,24 @@ import { SearchHandler } from "@/components/SearchHandler/SearchHandler";
 import { useFindDetails } from "@/hooks/useFindDetails";
 import { useParams } from "react-router-dom";
 
-export function Artists() {
+export function Albums() {
   const { id } = useParams<{ id: string }>();
-  const { data, isLoading, isError } = useFindDetails("artists", id ?? "");
-  console.log(data);
+  const { data, isLoading, isError } = useFindDetails("albums", id ?? "");
 
   return (
     <>
       <SearchHandler isLoading={isLoading} isError={isError} type="details">
         {data && (
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-4">
             <DetailsHeader
               image={data.image}
               title={data.name}
               subtitle={data.popularity}
-              description={data.followers}
-              optionalInformation={data.genres}
+              description={data.description}
+              optionalInformation={data.tracksQuantity}
             />
-            <List title={"Top Músicas"} data={data.topTracks} showNumbers />
+
+            <List title="Músicas" data={data.tracks} showNumbers />
           </div>
         )}
       </SearchHandler>

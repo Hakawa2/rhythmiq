@@ -1,4 +1,5 @@
 import { Card } from "@/components/Card/Card";
+import { Header } from "@/components/Header/Header";
 import { PaginationController } from "@/components/PaginationController/PaginationController";
 import { SearchHandler } from "@/components/SearchHandler/SearchHandler";
 import { SearchInput } from "@/components/SearchInput/SearchInput";
@@ -41,6 +42,7 @@ export function Home() {
 
   return (
     <>
+      <Header />
       <SearchInput
         search={search}
         onSearchChange={setSearch}
@@ -48,7 +50,12 @@ export function Home() {
         onTypeToggle={toggleType}
         onClean={clean}
       />
-      <SearchHandler isEmpty={isEmpty} isLoading={isLoading} isError={isError}>
+      <SearchHandler
+        isEmpty={isEmpty}
+        isLoading={isLoading}
+        isError={isError}
+        type="list"
+      >
         <div className="flex flex-wrap gap-4 md:gap-10">
           {data?.items &&
             data.items.map((result: ListItem) => (
