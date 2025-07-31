@@ -1,4 +1,3 @@
-// handlers.ts
 import { defaultImage } from "@/constants";
 import type { RawAlbumItem, RawArtistItem } from "@/types/common-response-type";
 import type { Albums, Artists } from "@/types/list-type";

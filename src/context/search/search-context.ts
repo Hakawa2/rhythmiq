@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { initialSearchState } from "./search-reducer";
 import type { SearchAction, SearchState } from "./search-types";
 
-type SearchContextType = {
+export type SearchContextType = {
   state: SearchState;
   dispatch: React.Dispatch<SearchAction>;
 };
