@@ -3,16 +3,17 @@ import { Header } from "@/components/Header/Header";
 import { PaginationController } from "@/components/PaginationController/PaginationController";
 import { SearchHandler } from "@/components/SearchHandler/SearchHandler";
 import { SearchInput } from "@/components/SearchInput/SearchInput";
+import { useSearchContext } from "@/context/search/useSearchContext";
 import { useSearchController } from "@/hooks/useSearchController";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import type { ListItem } from "@/types/list-type";
 import { scrollTo } from "@/utils/scrollTo.utils";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export function Home() {
-  const [pagination, setPagination] = useState("0");
+  const { state, dispatch } = useSearchContext();
   const {
-    search,
+    term,
     setSearch,
     type,
     toggleType,
@@ -23,7 +24,7 @@ export function Home() {
 
   const { data, isLoading, isError, isEmpty } = useSearchQuery(
     debouncedSearch,
-    pagination,
+    state.offset,
     type,
     {
       enabled: isQueryEnabled,
@@ -31,7 +32,7 @@ export function Home() {
   );
 
   const handlePagination = (page: string) => {
-    setPagination(page);
+    dispatch({ type: "SET_OFFSET", payload: page });
   };
 
   useEffect(() => {
@@ -44,7 +45,7 @@ export function Home() {
     <>
       <Header />
       <SearchInput
-        search={search}
+        search={term}
         onSearchChange={setSearch}
         type={type}
         onTypeToggle={toggleType}

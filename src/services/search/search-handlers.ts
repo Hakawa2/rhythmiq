@@ -2,7 +2,7 @@
 import type { RawAlbumItem, RawArtistItem } from "@/types/common-response-type";
 import type { Albums, Artists } from "@/types/list-type";
 import type { SearchConfig } from "@/types/search-types";
-import { formatDate } from "@/utils/format-date.utils";
+import { formatDate, formatNumbers } from "@/utils/format-date.utils";
 import { getPagination } from "@/utils/pagination.utils";
 
 const defaultImage = "https://placehold.co/512x512";
@@ -15,7 +15,7 @@ export const artistHandler: SearchConfig<Artists, RawArtistItem> = {
     name: artist.name,
     image: artist.images[0]?.url ?? defaultImage,
     ariaLabel: `Artista ${artist.name}`,
-    description: `Seguidores ${artist.followers?.total}`,
+    description: `Seguidores: ${formatNumbers(artist.followers?.total)}`,
     uri: `artists/${artist.id}`,
   }),
 };

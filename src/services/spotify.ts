@@ -27,7 +27,6 @@ export async function fetchAndStoreSpotifyToken() {
 
   const tokenData = response.data;
 
-  // Armazenar no localStorage
   const expiresAt = Date.now() + tokenData.expires_in * 1000;
   localStorage.setItem("spotify_token", tokenData.access_token);
   localStorage.setItem("spotify_token_expires_at", expiresAt.toString());
