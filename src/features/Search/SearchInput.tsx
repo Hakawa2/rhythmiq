@@ -1,3 +1,4 @@
+import { Input } from "@/components/Input/Input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { useSearchController } from "@/features/Search/hooks/useSearchController";
@@ -7,14 +8,12 @@ export const SearchInput = () => {
 
   return (
     <div className="flex flex-col items-center gap-4 mb-6">
-      <input
-        type="text"
+      <Input
         placeholder={`Buscar por ${
           type === "artists" ? "artista" : "álbum"
         }...`}
         value={term}
-        onChange={(e) => setSearch(e.target.value)}
-        className="w-full p-3 rounded-xl text-sm text-white placeholder-gray-500 outline-none ring-2 ring-purple-400"
+        setValue={setSearch}
       />
 
       <div className="flex items-center gap-4 self-end">

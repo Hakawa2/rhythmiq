@@ -1,3 +1,4 @@
+import { defaultImage } from "@/constants";
 import type {
   RawAlbumItem,
   RawArtistItem,
@@ -9,13 +10,7 @@ import type {
   DetailsConfig,
   Track,
 } from "@/types/details-type";
-import {
-  formatDate,
-  formatNumbers,
-  formatToTime,
-} from "@/utils/format-date.utils";
-
-const defaultImage = "https://placehold.co/512x512";
+import { formatDate, formatNumbers, formatToTime } from "@/utils/format.utils";
 
 export const artistDetailsHandler: DetailsConfig<RawArtistItem, ArtistDetails> =
   {

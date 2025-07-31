@@ -1,6 +1,6 @@
 export function Header() {
   return (
-    <header className="text-center py-10">
+    <header className="text-center py-10" data-testid="header-title">
       <h1 className="text-4xl md:text-6xl font-extrabold text-white">
         Rhythmiq
       </h1>

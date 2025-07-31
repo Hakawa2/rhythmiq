@@ -1,17 +1,17 @@
 type InputProps = {
-  search: string;
-  setSearch: (arg: string) => void;
+  value: string;
+  setValue: (arg: string) => void;
   placeholder: string;
 };
 
-export function Input({ search, setSearch, placeholder }: InputProps) {
+export function Input({ value, setValue, placeholder }: InputProps) {
   return (
     <input
       type="text"
       placeholder={placeholder}
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-      className="w-full p-3 rounded-xl text-black placeholder-gray-500 outline-none ring-2 ring-purple-400"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      className="w-full p-3 rounded-xl text-white placeholder-gray-500 outline-none ring-2 ring-purple-400"
     />
   );
 }

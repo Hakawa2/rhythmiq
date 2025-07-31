@@ -1,6 +1,6 @@
 import { BackButton } from "../BackButton/BackButton";
 
-type DetailsHeaderProps = {
+export type DetailsHeaderProps = {
   image: string;
   title: string;
   subtitle: string;
@@ -16,7 +16,10 @@ export function DetailsHeader({
   optionalInformation,
 }: DetailsHeaderProps) {
   return (
-    <header className="flex flex-col gap-6 md:items-start">
+    <header
+      className="flex flex-col gap-6 md:items-start"
+      data-testid="details-header"
+    >
       <BackButton />
       <div className="flex flex-col md:flex-row gap-6">
         <img

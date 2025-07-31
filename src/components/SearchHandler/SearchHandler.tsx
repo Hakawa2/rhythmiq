@@ -1,7 +1,7 @@
 import { DetailsLoading } from "@/layouts/DetailsLoading/DetailsLoading";
 import { ListLoading } from "@/layouts/ListLoading/ListLoading";
 
-type SearchHandlerProps<T> = {
+export type SearchHandlerProps<T> = {
   isLoading: boolean;
   isError: boolean;
   isEmpty?: boolean;
@@ -18,7 +18,11 @@ export const SearchHandler = <T,>({
   type,
 }: SearchHandlerProps<T>) => {
   if (isLoading) return type === "list" ? <ListLoading /> : <DetailsLoading />;
-  if (isError) return <p>Erro ao carregar dados 😢</p>;
-  if (isEmpty) return <p>Nenhum Resultado foi encontrado 😢</p>;
+  if (isError)
+    return <p data-testid="error-message">Erro ao carregar dados 😢</p>;
+  if (isEmpty)
+    return (
+      <p data-testid="empty-message">Nenhum Resultado foi encontrado 😢</p>
+    );
   return <>{children}</>;
 };
