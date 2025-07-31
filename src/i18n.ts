@@ -14,6 +14,14 @@ const resources = {
       footer: "Make by Rythmiq ©",
       search: "Search by {{ term }}...",
       clean: "Clean",
+      details: {
+        genre: "Genre: {{ term }}",
+        duration: "Duration: {{ term }}",
+        tracklist: "Tracklist",
+        topTracks: "Top Tracks",
+        popularity: "Popularity: {{ term }}",
+        tracksQuantity: "Tracks Quantity: {{ term }}",
+      },
     },
   },
   ptBr: {
@@ -28,6 +36,14 @@ const resources = {
       footer: "Feito por Rythmiq ©",
       search: "Buscar por {{ term }}...",
       clean: "Limpar",
+      details: {
+        genre: "Gênero {{ term }}",
+        duration: "Duração: {{ term }}",
+        tracklist: "Lista de faixas",
+        topTracks: "Principais faixas",
+        popularity: "Popularidade: {{ term }}",
+        tracksQuantity: "Quantidade de faixas: {{ term }}",
+      },
     },
   },
 };

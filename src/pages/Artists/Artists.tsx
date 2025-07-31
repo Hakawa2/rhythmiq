@@ -2,9 +2,11 @@ import { DetailsHeader } from "@/components/DetailsHeader/DetailsHeader";
 import { List } from "@/components/List/List";
 import { SearchHandler } from "@/components/SearchHandler/SearchHandler";
 import { useFindDetails } from "@/hooks/useFindDetails";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 export function Artists() {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, isError } = useFindDetails("artists", id ?? "");
 
@@ -20,7 +22,11 @@ export function Artists() {
               description={data.followers}
               optionalInformation={data.genres}
             />
-            <List title={"Top Músicas"} data={data.topTracks} showNumbers />
+            <List
+              title={t("details.topTracks")}
+              data={data.topTracks}
+              showNumbers
+            />
           </div>
         )}
       </SearchHandler>

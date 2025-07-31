@@ -1,4 +1,5 @@
 import { defaultImage } from "@/constants";
+import i18n from "@/i18n";
 import type {
   RawAlbumItem,
   RawArtistItem,
@@ -19,10 +20,15 @@ export const artistDetailsHandler: DetailsConfig<RawArtistItem, ArtistDetails> =
       id: artist.id,
       name: artist.name,
       image: artist.images[0]?.url ?? defaultImage,
-      ariaLabel: `Artista ${artist.name}`,
-      popularity: `Popularidade: ${artist.popularity}/100`,
-      followers: `Seguidores: ${formatNumbers(artist.followers?.total)}`,
-      genres: `Generos: ${artist.genres.toString()}`,
+      popularity: i18n.t("details.popularity", {
+        term: `${artist.popularity}/100`,
+      }),
+      followers: i18n.t("followers", {
+        term: formatNumbers(artist.followers?.total),
+      }),
+      genres: i18n.t("details.genre", {
+        term: artist.genres.toString(),
+      }),
     }),
   };
 
@@ -30,7 +36,9 @@ export const topTracksDetailsHandler: DetailsConfig<RawTopTrack, Track> = {
   handleItem: (track) => ({
     id: track.id,
     title: track.name,
-    subtitle: formatToTime(track.duration_ms),
+    subtitle: i18n.t("details.duration", {
+      term: formatToTime(track.duration_ms),
+    }),
   }),
 };
 
@@ -40,9 +48,15 @@ export const albumDetailsHandler: DetailsConfig<RawAlbumItem, AlbumDetails> = {
     id: album.id,
     name: album.name,
     image: album.images[0]?.url ?? defaultImage,
-    popularity: `Popularidade: ${album.popularity}/100`,
-    description: `Data de lançamento: ${formatDate(album.release_date)}`,
-    tracksQuantity: `Quantitade de musicas: ${album.total_tracks}`,
+    popularity: i18n.t("details.popularity", {
+      term: `${album.popularity}/100`,
+    }),
+    description: i18n.t("releaseDate", {
+      term: formatDate(album.release_date),
+    }),
+    tracksQuantity: i18n.t("details.tracksQuantity", {
+      term: album.total_tracks,
+    }),
     tracks: album.tracks.items.map((track) =>
       topTracksDetailsHandler.handleItem(track)
     ),
