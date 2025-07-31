@@ -1,69 +1,57 @@
-# React + TypeScript + Vite
+# rhythmiq
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Deploy](https://github.com/Hakawa2/rhythmiq/actions/workflows/deploy.yml/badge.svg)](https://github.com/Hakawa2/rhythmiq/actions)
 
-Currently, two official plugins are available:
+Um projeto moderno com React, Vite, Typescript e TailwindCSS para criação de experiências ricas e rápidas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requisitos
 
-## Expanding the ESLint configuration
+- **Node.js**: versão mínima recomendada **22.17.0**
+- **npm**: 9+
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Instalação
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Clone o repositório e instale as dependências:
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/Hakawa2/rhythmiq.git
+cd rhythmiq
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts Disponíveis
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `npm run dev`: inicia o servidor de desenvolvimento com Vite.
+- `npm run build`: compila o projeto para produção (TypeScript + Vite).
+- `npm run preview`: serve o build de produção localmente na porta 8080.
+- `npm run lint`: executa o linter (ESLint) para garantir a qualidade do código.
+- `npm run test`: executa os testes automatizados com o Vitest.
+- `npm run test:ui`: executa os testes no modo interface gráfica do Vitest.
+- `npm run test:coverage`: executa os testes e gera relatório de cobertura.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Rodando os Testes
+
+```bash
+npm run test         # Executa todos os testes
+npm run test:ui      # Interface visual dos testes (Vitest UI)
+npm run test:coverage # Relatório de cobertura dos testes
 ```
+
+Os testes utilizam o [Vitest](https://vitest.dev/) e [Testing Library](https://testing-library.com/).
+
+## Workflow de Deploy no GitHub Actions
+
+O deploy é realizado automaticamente via **GitHub Actions**. O fluxo típico é:
+
+1. Ao realizar um push na branch principal (geralmente `main` ou `master`), o workflow é acionado.
+2. O workflow instala as dependências, executa os testes, faz o build e publica a aplicação.
+3. O site é publicado automaticamente via GitHub Pages, ficando disponível em:  
+   [https://hakawa2.github.io/rhythmiq/](https://hakawa2.github.io/rhythmiq/)
+
+Você pode acompanhar o status dos deploys na aba **Actions** do repositório.
+
+---
+
+**Desenvolvido por Hakawa2**
+
+Qualquer dúvida, sugestão ou bug, abra uma [issue](https://github.com/Hakawa2/rhythmiq/issues).
