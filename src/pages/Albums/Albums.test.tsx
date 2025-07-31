@@ -2,12 +2,12 @@ import type { DetailsHeaderProps } from "@/components/DetailsHeader/DetailsHeade
 import type { ListProps } from "@/components/List/List";
 import type { SearchHandlerProps } from "@/components/SearchHandler/SearchHandler";
 import * as useFindDetailsModule from "@/hooks/useFindDetails";
-import { artistDetailsMock } from "@/tests/mocks/details";
+import { albumDetailsMock } from "@/tests/mocks/details";
 import type { DetailsMap } from "@/types/details-type";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { Artists } from "./Artists";
+import { Albums } from "./Albums";
 
 vi.mock("@/hooks/useFindDetails", () => ({
   useFindDetails: vi.fn(),
@@ -42,7 +42,7 @@ vi.mock("@/components/SearchHandler/SearchHandler", () => ({
   },
 }));
 
-describe("Artists", () => {
+describe("Albums", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -52,9 +52,9 @@ describe("Artists", () => {
       data: undefined,
       isLoading: true,
       isError: false,
-    } as UseQueryResult<DetailsMap["artists"]>);
+    } as UseQueryResult<DetailsMap["albums"]>);
 
-    render(<Artists />);
+    render(<Albums />);
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 
@@ -63,34 +63,34 @@ describe("Artists", () => {
       data: undefined,
       isLoading: false,
       isError: true,
-    } as UseQueryResult<DetailsMap["artists"]>);
+    } as UseQueryResult<DetailsMap["albums"]>);
 
-    render(<Artists />);
+    render(<Albums />);
     expect(screen.getByText("Error!")).toBeInTheDocument();
   });
 
-  it("renders artist details and top tracks when data is available", () => {
+  it("renders album details and list when data is present", () => {
     mockedUseFindDetails.mockReturnValue({
-      data: artistDetailsMock,
+      data: albumDetailsMock,
       isLoading: false,
       isError: false,
-    } as UseQueryResult<DetailsMap["artists"]>);
+    } as UseQueryResult<DetailsMap["albums"]>);
 
-    render(<Artists />);
+    render(<Albums />);
     expect(screen.getByTestId("details-header")).toHaveTextContent(
-      "Artist Name"
+      "Album Name"
     );
-    expect(screen.getByTestId("list")).toHaveTextContent("Top Músicas");
+    expect(screen.getByTestId("list")).toHaveTextContent("Músicas");
   });
 
-  it("does not render DetailsHeader or List if data is null", () => {
+  it("does not render details if data is null", () => {
     mockedUseFindDetails.mockReturnValue({
       data: undefined,
       isLoading: false,
       isError: false,
-    } as UseQueryResult<DetailsMap["artists"]>);
+    } as UseQueryResult<DetailsMap["albums"]>);
 
-    render(<Artists />);
+    render(<Albums />);
     expect(screen.queryByTestId("details-header")).not.toBeInTheDocument();
     expect(screen.queryByTestId("list")).not.toBeInTheDocument();
   });
