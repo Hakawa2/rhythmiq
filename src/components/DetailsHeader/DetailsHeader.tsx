@@ -25,6 +25,7 @@ export function DetailsHeader({
         <img
           src={image}
           alt={title}
+          aria-hidden="true"
           className="self-center w-48 h-48 object-cover rounded-full shadow-lg"
         />
         <div className="flex flex-col items-start justify-center">

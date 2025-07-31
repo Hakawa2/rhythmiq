@@ -1,10 +1,13 @@
+import { useTranslation } from "react-i18next";
+
 export function Footer() {
+  const { t } = useTranslation();
   return (
     <footer
-      className="bg-white/30 backdrop-blur-3xl flex items-center justify-center"
+      className="bg-white/30 backdrop-blur-3xl flex items-center justify-center gap-4"
       data-testid="footer"
     >
-      <p>Feito por Rythmiq &copy;</p>
+      <p>{t("footer")}</p>
     </footer>
   );
 }

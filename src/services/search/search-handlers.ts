@@ -4,6 +4,7 @@ import type { Albums, Artists } from "@/types/list-type";
 import type { SearchConfig } from "@/types/search-types";
 import { formatDate, formatNumbers } from "@/utils/format.utils";
 import { getPagination } from "@/utils/pagination.utils";
+import i18next from "i18next";
 
 export const artistHandler: SearchConfig<Artists, RawArtistItem> = {
   type: "artist",
@@ -12,8 +13,10 @@ export const artistHandler: SearchConfig<Artists, RawArtistItem> = {
     id: artist.id,
     name: artist.name,
     image: artist.images[0]?.url ?? defaultImage,
-    ariaLabel: `Artista ${artist.name}`,
-    description: `Seguidores: ${formatNumbers(artist.followers?.total)}`,
+    ariaLabel: i18next.t("ariaLabelArtist", { term: artist.name }),
+    description: i18next.t("followers", {
+      term: formatNumbers(artist.followers?.total),
+    }),
     uri: `artists/${artist.id}`,
   }),
 };
@@ -25,8 +28,10 @@ export const albumHandler: SearchConfig<Albums, RawAlbumItem> = {
     id: album.id,
     name: album.name,
     image: album.images[0]?.url ?? defaultImage,
-    ariaLabel: `Álbum ${album.name}`,
-    description: `Data de lançamento: ${formatDate(album.release_date)}`,
+    ariaLabel: i18next.t("ariaLabelAlbum", { term: album.name }),
+    description: i18next.t("releaseDate", {
+      term: formatDate(album.release_date),
+    }),
     uri: `albums/${album.id}`,
   }),
   getPagination: (data) => ({
