@@ -1,7 +1,11 @@
-import { searchFunctionsMap } from "@/services";
+import { searchFunctionsMap } from "@/services/search";
 import type { List } from "@/types/list-type";
 import type { SearchType } from "@/types/search-types";
-import { useQuery, type UseQueryResult } from "@tanstack/react-query";
+import {
+  useQuery,
+  useQueryClient,
+  type UseQueryResult,
+} from "@tanstack/react-query";
 
 type UseSearchQueryOptions = {
   enabled?: boolean;
@@ -13,13 +17,20 @@ export const useSearchQuery = (
   type: SearchType,
   options?: UseSearchQueryOptions
 ): UseQueryResult<List, Error> & { isEmpty: boolean } => {
+  const queryClient = useQueryClient();
+
   const queryFn = () =>
     searchFunctionsMap[type](query, offset) as Promise<List>;
 
   const queryResult = useQuery({
     queryKey: [type, query, offset],
     queryFn,
-    enabled: options?.enabled ?? true,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    enabled: options?.enabled,
+    placeholderData: () => {
+      return queryClient.getQueryData([type, query, offset]);
+    },
     staleTime: 1000 * 60 * 5,
     retry: false,
   });

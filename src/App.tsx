@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "react-router-dom";
+import { SearchProvider } from "./context/search/search-provider";
 import { router } from "./router";
 
 export function App() {
@@ -7,7 +8,9 @@ export function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <SearchProvider>
+        <RouterProvider router={router} />
+      </SearchProvider>
     </QueryClientProvider>
   );
 }

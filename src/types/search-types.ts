@@ -1,4 +1,4 @@
-import type { searchFunctionsMap } from "@/services";
+import type { searchFunctionsMap } from "@/services/search";
 import type { List, ListItem } from "./list-type";
 
 export type SearchType = keyof typeof searchFunctionsMap;
