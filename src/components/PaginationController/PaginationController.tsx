@@ -27,11 +27,13 @@ export function PaginationController({
           <PaginationItem>
             <PaginationPrevious
               className="cursor-pointer"
+              data-testid="pagination-previous"
               onClick={() => handleNewPage(pagination.previous)}
             />
           </PaginationItem>
           <PaginationItem>
             <PaginationNext
+              data-testid="pagination-next"
               className="cursor-pointer"
               onClick={() => handleNewPage(pagination.next)}
             />

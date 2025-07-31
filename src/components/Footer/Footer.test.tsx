@@ -5,7 +5,9 @@ import { Footer } from "./Footer";
 describe("Footer", () => {
   it("renders the footer element", () => {
     render(<Footer />);
-    const footer = screen.getByRole("contentinfo");
+
+    const footer = screen.getByTestId("footer");
+
     expect(footer).toBeInTheDocument();
   });
 

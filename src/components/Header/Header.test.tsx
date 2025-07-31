@@ -5,20 +5,26 @@ import { Header } from "./Header";
 describe("Header", () => {
   it("renders the header element", () => {
     render(<Header />);
-    const header = screen.getByRole("banner");
+
+    const header = screen.getByTestId("header-title");
+
     expect(header).toBeInTheDocument();
   });
 
   it("renders the main title", () => {
     render(<Header />);
-    const title = screen.getByRole("heading", { name: /rhythmiq/i });
+
+    const title = screen.getByTestId("header-title");
+
     expect(title).toBeInTheDocument();
     expect(title).toHaveTextContent("Rhythmiq");
   });
 
   it("renders the subtitle", () => {
     render(<Header />);
+
     const subtitle = screen.getByText(/descubra seu novo artista favorito/i);
+
     expect(subtitle).toBeInTheDocument();
   });
 });

@@ -1,4 +1,4 @@
-type ListProps = {
+export type ListProps = {
   title: string;
   showNumbers: boolean;
   data: {

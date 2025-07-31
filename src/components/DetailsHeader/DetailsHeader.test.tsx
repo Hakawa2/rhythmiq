@@ -5,17 +5,37 @@ import { describe, expect, it } from "vitest";
 import { DetailsHeader } from "./DetailsHeader";
 
 describe("Details Header component", () => {
-  it("should render details header", () => {
+  it("should render the header with the correct test id", () => {
     renderWithRouter(<DetailsHeader {...detailsHeaderMock} />);
 
-    const text = screen.getByRole("heading");
-    expect(text.textContent).toBe("mock-title");
+    expect(screen.getByTestId("details-header")).toBeInTheDocument();
   });
 
-  it("should render back button", () => {
+  it("should render the BackButton component", () => {
     renderWithRouter(<DetailsHeader {...detailsHeaderMock} />);
 
-    const button = screen.getByRole("button");
-    expect(button).toBeInTheDocument();
+    const backButton = screen.getByRole("button");
+
+    expect(backButton).toBeInTheDocument();
+  });
+
+  it("should render the image with correct src and alt", () => {
+    renderWithRouter(<DetailsHeader {...detailsHeaderMock} />);
+
+    const img = screen.getByRole("img");
+
+    expect(img).toHaveAttribute("src", detailsHeaderMock.image);
+    expect(img).toHaveAttribute("alt", detailsHeaderMock.title);
+  });
+
+  it("should render the title, subtitle, description, and optional information", () => {
+    renderWithRouter(<DetailsHeader {...detailsHeaderMock} />);
+
+    expect(screen.getByText(detailsHeaderMock.title)).toBeInTheDocument();
+    expect(screen.getByText(detailsHeaderMock.subtitle)).toBeInTheDocument();
+    expect(screen.getByText(detailsHeaderMock.description)).toBeInTheDocument();
+    expect(
+      screen.getByText(detailsHeaderMock.optionalInformation)
+    ).toBeInTheDocument();
   });
 });

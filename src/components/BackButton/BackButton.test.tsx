@@ -20,6 +20,7 @@ describe("BackButton component", () => {
     renderWithRouter(<BackButton />);
 
     const button = screen.getByTestId("back-button");
+
     expect(button).toBeInTheDocument();
   });
 
@@ -28,6 +29,7 @@ describe("BackButton component", () => {
 
     const button = screen.getByTestId("back-button");
     fireEvent.click(button);
+
     expect(mockNavigate).toHaveBeenCalledWith("/");
   });
 });

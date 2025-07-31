@@ -37,7 +37,8 @@ describe("Card component", () => {
       />
     );
 
-    const card = screen.getByRole("link");
+    const card = screen.getByTestId("card-link");
+
     expect(card).toBeInTheDocument();
   });
 
@@ -52,8 +53,9 @@ describe("Card component", () => {
       </MemoryRouter>
     );
 
-    const link = screen.getByRole("link");
+    const link = screen.getByTestId("card-link");
     fireEvent.click(link);
+
     expect(screen.getByText("Mock URL Page")).toBeInTheDocument();
   });
 });
