@@ -1,11 +1,7 @@
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "@/hooks/useTranslate";
 
 export function LanguageToggle() {
-  const { i18n } = useTranslation();
-
-  const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === "en" ? "ptBr" : "en");
-  };
+  const { toggleLanguage, currentLanguage } = useTranslate();
 
   return (
     <div className="absolute top-4 right-4">
@@ -13,7 +9,7 @@ export function LanguageToggle() {
         onClick={toggleLanguage}
         className="text-white px-2 py-1 rounded bg-white/20 hover:bg-white/30 transition cursor-pointer"
       >
-        {i18n.language.toUpperCase()}
+        {currentLanguage}
       </button>
     </div>
   );
