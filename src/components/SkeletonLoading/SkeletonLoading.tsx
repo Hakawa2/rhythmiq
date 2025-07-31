@@ -13,11 +13,16 @@ export function SkeletonLoading({
   skeletons,
 }: SkeletonLoadingProps) {
   return (
-    <div className={containerClassName} aria-hidden="true">
+    <div
+      className={containerClassName}
+      data-testid="skeleton-loading"
+      aria-hidden="true"
+    >
       {skeletons.map((skeleton) => (
         <Skeleton
           key={skeleton.id}
           className={skeleton.className}
+          data-testid="skeleton"
           aria-hidden="true"
         />
       ))}

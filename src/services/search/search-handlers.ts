@@ -2,7 +2,7 @@
 import type { RawAlbumItem, RawArtistItem } from "@/types/common-response-type";
 import type { Albums, Artists } from "@/types/list-type";
 import type { SearchConfig } from "@/types/search-types";
-import { formatDate, formatNumbers } from "@/utils/format-date.utils";
+import { formatDate, formatNumbers } from "@/utils/format.utils";
 import { getPagination } from "@/utils/pagination.utils";
 
 const defaultImage = "https://placehold.co/512x512";

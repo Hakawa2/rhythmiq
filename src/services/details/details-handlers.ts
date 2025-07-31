@@ -9,11 +9,7 @@ import type {
   DetailsConfig,
   Track,
 } from "@/types/details-type";
-import {
-  formatDate,
-  formatNumbers,
-  formatToTime,
-} from "@/utils/format-date.utils";
+import { formatDate, formatNumbers, formatToTime } from "@/utils/format.utils";
 
 const defaultImage = "https://placehold.co/512x512";
 
