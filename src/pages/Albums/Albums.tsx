@@ -18,9 +18,9 @@ export function Albums() {
             <DetailsHeader
               image={data.image}
               title={data.name}
-              subtitle={data.popularity}
+              subtitle={data.subtitle}
               description={data.description}
-              optionalInformation={data.tracksQuantity}
+              optionalInformation={data.optionalInformation}
             />
 
             <List

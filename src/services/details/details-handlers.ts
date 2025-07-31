@@ -20,15 +20,24 @@ export const artistDetailsHandler: DetailsConfig<RawArtistItem, ArtistDetails> =
       id: artist.id,
       name: artist.name,
       image: artist.images[0]?.url ?? defaultImage,
-      popularity: i18n.t("details.popularity", {
-        term: `${artist.popularity}/100`,
-      }),
-      followers: i18n.t("followers", {
-        term: formatNumbers(artist.followers?.total),
-      }),
-      genres: i18n.t("details.genre", {
-        term: artist.genres.toString(),
-      }),
+      subtitle: {
+        key: "followers",
+        option: {
+          term: formatNumbers(artist.followers.total),
+        },
+      },
+      optionalInformation: {
+        key: "details.genres",
+        option: {
+          term: artist.genres.toString(),
+        },
+      },
+      description: {
+        key: "details.popularity",
+        option: {
+          term: `${artist.popularity}/100`,
+        },
+      },
     }),
   };
 
@@ -48,15 +57,24 @@ export const albumDetailsHandler: DetailsConfig<RawAlbumItem, AlbumDetails> = {
     id: album.id,
     name: album.name,
     image: album.images[0]?.url ?? defaultImage,
-    popularity: i18n.t("details.popularity", {
-      term: `${album.popularity}/100`,
-    }),
-    description: i18n.t("releaseDate", {
-      term: formatDate(album.release_date),
-    }),
-    tracksQuantity: i18n.t("details.tracksQuantity", {
-      term: album.total_tracks,
-    }),
+    subtitle: {
+      key: "details.popularity",
+      option: {
+        term: `${album.popularity}/100`,
+      },
+    },
+    description: {
+      key: "releaseDate",
+      option: {
+        term: formatDate(album.release_date),
+      },
+    },
+    optionalInformation: {
+      key: "details.tracksQuantity",
+      option: {
+        term: album.total_tracks,
+      },
+    },
     tracks: album.tracks.items.map((track) =>
       topTracksDetailsHandler.handleItem(track)
     ),

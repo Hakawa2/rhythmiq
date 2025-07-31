@@ -51,7 +51,6 @@ export function Home() {
                 key={result.id}
                 image={result.image}
                 name={result.name}
-                ariaLabel={result.ariaLabel}
                 description={result.description}
                 url={result.uri}
               />

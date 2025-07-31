@@ -1,3 +1,5 @@
+import type { TranslatableFields } from "./translate-type";
+
 export type DetailsMap = {
   artists: ArtistDetails & TopTracksDetails;
   albums: AlbumDetails;
@@ -12,20 +14,14 @@ export type AlbumDetails = {
   id: string;
   name: string;
   image: string;
-  popularity: string;
-  description: string;
-  tracksQuantity: string;
   tracks: Track[];
-};
+} & TranslatableFields;
 
 export type ArtistDetails = {
   id: string;
   name: string;
-  popularity: string;
-  followers: string;
   image: string;
-  genres: string;
-};
+} & TranslatableFields;
 
 export type TopTracksDetails = {
   topTracks: Track[];
