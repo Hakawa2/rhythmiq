@@ -1,22 +1,10 @@
+import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import type { SearchType } from "@/types/search-types";
-import { Label } from "../ui/label";
+import { useSearchController } from "@/features/Search/hooks/useSearchController";
 
-type SearchInputProps = {
-  search: string;
-  onSearchChange: (value: string) => void;
-  type: SearchType;
-  onTypeToggle: () => void;
-  onClean: () => void;
-};
+export const SearchInput = () => {
+  const { term, setSearch, type, toggleType, clean } = useSearchController();
 
-export const SearchInput = ({
-  search,
-  onSearchChange,
-  type,
-  onTypeToggle,
-  onClean,
-}: SearchInputProps) => {
   return (
     <div className="flex flex-col items-center gap-4 mb-6">
       <input
@@ -24,8 +12,8 @@ export const SearchInput = ({
         placeholder={`Buscar por ${
           type === "artists" ? "artista" : "álbum"
         }...`}
-        value={search}
-        onChange={(e) => onSearchChange(e.target.value)}
+        value={term}
+        onChange={(e) => setSearch(e.target.value)}
         className="w-full p-3 rounded-xl text-sm text-white placeholder-gray-500 outline-none ring-2 ring-purple-400"
       />
 
@@ -35,7 +23,7 @@ export const SearchInput = ({
             id="search-type"
             className="cursor-pointer"
             checked={type === "albums"}
-            onCheckedChange={onTypeToggle}
+            onCheckedChange={toggleType}
           />
           <Label
             htmlFor="search-type"
@@ -44,7 +32,7 @@ export const SearchInput = ({
             {type === "artists" ? "Artistas" : "Álbuns"}
           </Label>
         </div>
-        <button className="cursor-pointer text-sm text-white" onClick={onClean}>
+        <button className="cursor-pointer text-sm text-white" onClick={clean}>
           Limpar
         </button>
       </div>

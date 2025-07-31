@@ -2,9 +2,10 @@ import { Card } from "@/components/Card/Card";
 import { Header } from "@/components/Header/Header";
 import { PaginationController } from "@/components/PaginationController/PaginationController";
 import { SearchHandler } from "@/components/SearchHandler/SearchHandler";
-import { SearchInput } from "@/components/SearchInput/SearchInput";
+
 import { useSearchContext } from "@/context/search/useSearchContext";
-import { useSearchController } from "@/hooks/useSearchController";
+import { SearchInput } from "@/features/Search/SearchInput";
+import { useSearchController } from "@/features/Search/hooks/useSearchController";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import type { ListItem } from "@/types/list-type";
 import { scrollTo } from "@/utils/scrollTo.utils";
@@ -12,15 +13,7 @@ import { useEffect } from "react";
 
 export function Home() {
   const { state, dispatch } = useSearchContext();
-  const {
-    term,
-    setSearch,
-    type,
-    toggleType,
-    debouncedSearch,
-    isQueryEnabled,
-    clean,
-  } = useSearchController();
+  const { type, debouncedSearch, isQueryEnabled } = useSearchController();
 
   const { data, isLoading, isError, isEmpty } = useSearchQuery(
     debouncedSearch,
@@ -44,13 +37,7 @@ export function Home() {
   return (
     <>
       <Header />
-      <SearchInput
-        search={term}
-        onSearchChange={setSearch}
-        type={type}
-        onTypeToggle={toggleType}
-        onClean={clean}
-      />
+      <SearchInput />
       <SearchHandler
         isEmpty={isEmpty}
         isLoading={isLoading}
