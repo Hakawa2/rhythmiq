@@ -1,11 +1,13 @@
+import type { TranslateScruture } from "@/types/translate-type";
+import { useTranslation } from "react-i18next";
 import { BackButton } from "../BackButton/BackButton";
 
 export type DetailsHeaderProps = {
   image: string;
   title: string;
-  subtitle: string;
-  description: string;
-  optionalInformation: string;
+  subtitle: TranslateScruture;
+  description: TranslateScruture;
+  optionalInformation: TranslateScruture;
 };
 
 export function DetailsHeader({
@@ -15,6 +17,7 @@ export function DetailsHeader({
   description,
   optionalInformation,
 }: DetailsHeaderProps) {
+  const { t } = useTranslation();
   return (
     <header
       className="flex flex-col gap-6 md:items-start"
@@ -30,9 +33,15 @@ export function DetailsHeader({
         />
         <div className="flex flex-col items-start justify-center">
           <h1 className="text-3xl font-bold">{title}</h1>
-          <p className="text-sm text-gray-300">{subtitle}</p>
-          <p className="text-sm text-gray-300">{description}</p>
-          <p className="text-sm text-gray-300">{optionalInformation}</p>
+          <p className="text-sm text-gray-300">
+            {t(subtitle.key, subtitle.option)}
+          </p>
+          <p className="text-sm text-gray-300">
+            {t(description.key, description.option)}
+          </p>
+          <p className="text-sm text-gray-300">
+            {t(optionalInformation.key, optionalInformation.option)}
+          </p>
         </div>
       </div>
     </header>

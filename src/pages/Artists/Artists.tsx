@@ -18,9 +18,9 @@ export function Artists() {
             <DetailsHeader
               image={data.image}
               title={data.name}
-              subtitle={data.popularity}
-              description={data.followers}
-              optionalInformation={data.genres}
+              subtitle={data.subtitle}
+              description={data.description}
+              optionalInformation={data.optionalInformation}
             />
             <List
               title={t("details.topTracks")}

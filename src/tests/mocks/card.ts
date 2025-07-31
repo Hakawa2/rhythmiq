@@ -3,5 +3,10 @@ export const cardMock = {
   image: "mock-image",
   ariaLabel: "mock-aria",
   name: "mock-name",
-  description: "mock-description",
+  description: {
+    key: "mock-key",
+    option: {
+      term: "mock-term",
+    },
+  },
 };

@@ -32,10 +32,14 @@ describe("Details Header component", () => {
     renderWithRouter(<DetailsHeader {...detailsHeaderMock} />);
 
     expect(screen.getByText(detailsHeaderMock.title)).toBeInTheDocument();
-    expect(screen.getByText(detailsHeaderMock.subtitle)).toBeInTheDocument();
-    expect(screen.getByText(detailsHeaderMock.description)).toBeInTheDocument();
     expect(
-      screen.getByText(detailsHeaderMock.optionalInformation)
+      screen.getByText(detailsHeaderMock.subtitle.key)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(detailsHeaderMock.description.key)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(detailsHeaderMock.optionalInformation.key)
     ).toBeInTheDocument();
   });
 });

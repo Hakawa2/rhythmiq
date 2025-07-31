@@ -1,6 +1,7 @@
 import type { RawAlbumItem, RawArtistItem } from "./common-response-type";
 import type { PaginationType } from "./pagination";
 import type { SearchType } from "./search-types";
+import type { TranslateScruture } from "./translate-type";
 
 export type SpotifySearchResponse<K extends SearchType, T> = {
   [key in K]: SpotifyItemResponse<T>;
@@ -27,8 +28,7 @@ export type List = {
 export type ListItem = {
   id: string;
   name: string;
-  description: string;
-  ariaLabel: string;
   image: string;
   uri: string;
+  description: TranslateScruture;
 };

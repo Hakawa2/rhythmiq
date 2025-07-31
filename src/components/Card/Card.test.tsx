@@ -25,16 +25,10 @@ function LocationDisplay() {
 
 describe("Card component", () => {
   it("should render card component", () => {
-    const { ariaLabel, description, image, name, url } = cardMock;
+    const { description, image, name, url } = cardMock;
 
     renderWithRouter(
-      <Card
-        url={url}
-        ariaLabel={ariaLabel}
-        description={description}
-        name={name}
-        image={image}
-      />
+      <Card url={url} description={description} name={name} image={image} />
     );
 
     const card = screen.getByTestId("card-link");
