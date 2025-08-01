@@ -6,7 +6,7 @@ export type RawArtistItem = {
 } & RawCommonItem;
 
 export type RawAlbumItem = {
-  release_date: Date;
+  release_date: string;
   total_tracks: number;
   tracks: {
     items: RawTopTrack[];

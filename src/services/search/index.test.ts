@@ -1,66 +1,38 @@
-// import { beforeEach, describe, expect, it, vi } from "vitest";
-// import { searchAlbums, searchArtists, searchFunctionsMap } from "./index";
-// import * as searchHandlers from "./search-handlers";
-// import * as searchService from "./search-service";
-// import { albumHandler } from "./search-handlers";
+import { afterEach } from "node:test";
+import { describe, expect, it, vi } from "vitest";
 
-// describe("searchArtists", () => {
-//   const mockSearchSpotify = vi.fn();
-//   const mockArtistHandler = vi.fn();
+import { searchAlbums, searchArtists, searchFunctionsMap } from ".";
 
-//   beforeEach(() => {
-//     vi.spyOn(searchService, "searchSpotify").mockImplementation(
-//       mockSearchSpotify
-//     );
-//     vi.spyOn(searchHandlers, "artistHandler").mockImplementation(
-//       mockArtistHandler
-//     );
-//     mockSearchSpotify.mockClear();
-//   });
+import { albumHandler, artistHandler } from "./search-handlers";
+import * as searchService from "./search-service";
 
-//   it("calls searchSpotify with correct arguments", () => {
-//     const query = "test artist";
-//     searchArtists(query);
-//     expect(mockSearchSpotify).toHaveBeenCalledWith(
-//       query,
-//       "0",
-//       searchHandlers.artistHandler
-//     );
-//   });
-// });
+describe("search handlers map", () => {
+  const mockSearchSpotify = vi.spyOn(searchService, "searchSpotify");
 
-// describe("searchAlbums", () => {
-//   const mockSearchSpotify = vi.fn();
-//   const mockAlbumHandler = vi.fn();
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
 
-//   beforeEach(() => {
-//     vi.spyOn(searchService, "searchSpotify").mockImplementation(
-//       mockSearchSpotify
-//     );
-//     vi.spyOn(searchHandlers, albumHandler).mockImplementation(
-//       mockAlbumHandler
-//     );
-//     mockSearchSpotify.mockClear();
-//   });
+  it("should call searchSpotify with artistHandler in searchArtists", () => {
+    const query = "radiohead";
+    searchArtists(query);
 
-//   it("calls searchSpotify with correct arguments", () => {
-//     const query = "test album";
-//     const offset = "10";
-//     searchAlbums(query, offset);
-//     expect(mockSearchSpotify).toHaveBeenCalledWith(
-//       query,
-//       offset,
-//       searchHandlers.albumHandler
-//     );
-//   });
-// });
+    expect(mockSearchSpotify).toHaveBeenCalledWith(query, "0", artistHandler);
+  });
 
-// describe("searchFunctionsMap", () => {
-//   it("maps 'artists' to searchArtists", () => {
-//     expect(searchFunctionsMap.artists).toBe(searchArtists);
-//   });
+  it("should call searchSpotify with albumHandler in searchAlbums", () => {
+    const query = "metallica";
+    const offset = "20";
+    searchAlbums(query, offset);
 
-//   it("maps 'albums' to searchAlbums", () => {
-//     expect(searchFunctionsMap.albums).toBe(searchAlbums);
-//   });
-// });
+    expect(mockSearchSpotify).toHaveBeenCalledWith(query, offset, albumHandler);
+  });
+
+  it("searchFunctionsMap should map 'artists' to searchArtists", () => {
+    expect(searchFunctionsMap.artists).toBe(searchArtists);
+  });
+
+  it("searchFunctionsMap should map 'albums' to searchAlbums", () => {
+    expect(searchFunctionsMap.albums).toBe(searchAlbums);
+  });
+});

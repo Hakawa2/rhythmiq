@@ -7,9 +7,9 @@ describe("formatDate", () => {
   });
 
   it("should format a valid Date object to pt-BR format", () => {
-    const date = new Date("2023-12-25T00:00:00Z");
+    const date = new Date("2020-01-01");
     const expected = new Intl.DateTimeFormat("pt-BR").format(date);
-    expect(formatDate(date)).toBe(expected);
+    expect(formatDate("2020-01-01")).toBe(expected);
   });
 });
 

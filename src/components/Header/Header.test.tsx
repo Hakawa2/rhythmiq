@@ -23,7 +23,7 @@ describe("Header", () => {
   it("renders the subtitle", () => {
     render(<Header />);
 
-    const subtitle = screen.getByText(/descubra seu novo artista favorito/i);
+    const subtitle = screen.getByText(/Descubra seu novo artista favorito!!/i);
 
     expect(subtitle).toBeInTheDocument();
   });
