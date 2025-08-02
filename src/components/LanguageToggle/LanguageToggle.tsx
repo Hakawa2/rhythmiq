@@ -8,6 +8,7 @@ export function LanguageToggle() {
       <button
         onClick={toggleLanguage}
         className="text-white px-2 py-1 rounded bg-white/20 hover:bg-white/30 transition cursor-pointer"
+        data-testid="language-toggle-button"
       >
         {currentLanguage}
       </button>

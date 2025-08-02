@@ -1,4 +1,4 @@
-type InputProps = {
+export type InputProps = {
   value: string;
   setValue: (arg: string) => void;
   placeholder: string;

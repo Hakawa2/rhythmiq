@@ -13,6 +13,6 @@ describe("Footer", () => {
 
   it("displays the correct text", () => {
     render(<Footer />);
-    expect(screen.getByText(/Feito por Rythmiq/i)).toBeInTheDocument();
+    expect(screen.getByText(/Feito por Rythmiq ©/i)).toBeInTheDocument();
   });
 });

@@ -1,12 +1,12 @@
 import { albumHandler, artistHandler } from "./search-handlers";
-import { searchSpotify } from "./search-service";
+import { searchList } from "./search-service";
 
 export const searchArtists = (query: string) => {
-  return searchSpotify(query, "0", artistHandler);
+  return searchList(query, "0", artistHandler);
 };
 
 export const searchAlbums = (query: string, offset: string) =>
-  searchSpotify(query, offset, albumHandler);
+  searchList(query, offset, albumHandler);
 
 export const searchFunctionsMap = {
   artists: searchArtists,

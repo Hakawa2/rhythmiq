@@ -22,6 +22,12 @@ const resources = {
         popularity: "Popularity: {{ term }}",
         tracksQuantity: "Tracks Quantity: {{ term }}",
       },
+      404: {
+        title: "Page Not Found",
+        message:
+          "The page you are looking for does not exist or the ID is invalid.",
+        backToHome: "Back to Home Page",
+      },
     },
   },
   ptBr: {
@@ -43,6 +49,12 @@ const resources = {
         topTracks: "Principais faixas",
         popularity: "Popularidade: {{ term }}",
         tracksQuantity: "Quantidade de faixas: {{ term }}",
+      },
+      404: {
+        title: "Página Não Encontrada",
+        message:
+          "A página que você está procurando não existe ou o ID é inválido.",
+        backToHome: "Voltar para a Página Inicial",
       },
     },
   },

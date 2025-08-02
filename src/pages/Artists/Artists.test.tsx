@@ -15,11 +15,6 @@ vi.mock("@/hooks/useFindDetails", () => ({
 
 const mockedUseFindDetails = vi.mocked(useFindDetailsModule.useFindDetails);
 
-vi.mock("react-router-dom", () => ({
-  useParams: vi.fn(() => ({ id: "123" })),
-  useNavigate: vi.fn(),
-}));
-
 vi.mock("@/components/DetailsHeader/DetailsHeader", () => ({
   DetailsHeader: (props: DetailsHeaderProps) => (
     <div data-testid="details-header">{props.title}</div>
@@ -80,7 +75,7 @@ describe("Artists", () => {
     expect(screen.getByTestId("details-header")).toHaveTextContent(
       "Artist Name"
     );
-    expect(screen.getByTestId("list")).toHaveTextContent("Top Músicas");
+    expect(screen.getByTestId("list")).toHaveTextContent("Principais faixas");
   });
 
   it("does not render DetailsHeader or List if data is null", () => {

@@ -35,10 +35,11 @@ describe("Input", () => {
       "p-3",
       "rounded-xl",
       "text-white",
-      "placeholder-gray-500",
+      "placeholder-gray-400",
       "outline-none",
       "ring-2",
-      "ring-purple-400"
+      "ring-purple-400",
+      "font-bold"
     );
   });
 });

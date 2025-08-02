@@ -8,12 +8,23 @@ export default defineConfig(({ mode }) => ({
   plugins: [react(), tailwindcss()],
   base: mode === "production" ? "/rhythmiq/" : "/",
   test: {
-    setupFiles: "./src/setupTests.ts",
+    setupFiles: "./src/tests/setupTests.tsx",
     environment: "jsdom",
     globals: true,
     coverage: {
       reporter: ["text", "json", "html"],
-      exclude: ["node_modules/", "dist/", "**/*.d.ts", "**/*.config.*"],
+      exclude: [
+        "node_modules/",
+        "dist/",
+        "**/*.d.ts",
+        "**/*.config.*",
+        "src/types/",
+        "src/tests/",
+        "src/router/",
+        "src/main.tsx",
+        "src/components/ui/",
+        "src/lib",
+      ],
     },
   },
   resolve: {

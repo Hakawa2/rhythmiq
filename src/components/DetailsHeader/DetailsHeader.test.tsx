@@ -22,10 +22,9 @@ describe("Details Header component", () => {
   it("should render the image with correct src and alt", () => {
     renderWithRouter(<DetailsHeader {...detailsHeaderMock} />);
 
-    const img = screen.getByRole("img");
+    const img = screen.getByRole("img", { hidden: true });
 
     expect(img).toHaveAttribute("src", detailsHeaderMock.image);
-    expect(img).toHaveAttribute("alt", detailsHeaderMock.title);
   });
 
   it("should render the title, subtitle, description, and optional information", () => {

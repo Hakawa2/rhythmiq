@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { SkeletonLoading } from "./SkeletonLoading";
 
-// Mock the Skeleton component
 vi.mock("../ui/skeleton", () => ({
   Skeleton: ({ className }: { className?: string }) => (
     <div data-testid="skeleton" className={className} />

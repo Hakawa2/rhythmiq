@@ -8,6 +8,8 @@ export const findDetails = async <T, K>(
 ) => {
   const res = await apiSpotify.get(`${type}/${id}`);
 
+  console.log(res);
+
   return {
     ...config.handleItem(res.data),
   };

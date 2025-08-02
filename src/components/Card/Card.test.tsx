@@ -3,20 +3,8 @@ import { fireEvent, render, screen } from "@testing-library/react";
 
 import { renderWithRouter } from "@/tests/utils";
 import { MemoryRouter, Route, Routes, useLocation } from "react-router-dom";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { Card } from "./Card";
-
-const mockNavigate = vi.fn();
-
-vi.mock("react-router-dom", async () => {
-  const actual = await vi.importActual<typeof import("react-router-dom")>(
-    "react-router-dom"
-  );
-  return {
-    ...actual,
-    useNavigate: () => mockNavigate,
-  };
-});
 
 function LocationDisplay() {
   const location = useLocation();
