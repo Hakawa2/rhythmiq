@@ -38,4 +38,17 @@ describe("SearchContext", () => {
 
     expect(screen.getByTestId("offset").textContent).toBe("5");
   });
+
+  it("uses default context when provider is missing", () => {
+    function NoProviderComponent() {
+      const { state, dispatch } = useSearchContext();
+      expect(state.offset).toBe("0");
+      expect(() =>
+        dispatch({ type: "SET_OFFSET", payload: "5" })
+      ).not.toThrow();
+      return null;
+    }
+
+    render(<NoProviderComponent />);
+  });
 });
