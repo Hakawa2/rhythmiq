@@ -2,6 +2,7 @@ import { defaultImage } from "@/constants";
 
 import {
   albumDetailsMock,
+  artistDetailsMock,
   rawAlbumDetailsMock,
   rawAlbumNoImageDetailsMock,
   rawArtistDetailsMock,
@@ -25,23 +26,7 @@ describe("artistDetailsHandler.handleItem", () => {
   it("should transform RawArtistItem to ArtistDetails", () => {
     const result = artistDetailsHandler.handleItem(rawArtistDetailsMock);
 
-    expect(result).toMatchObject({
-      id: "123",
-      image: "image-url",
-      name: "Artist Name",
-      subtitle: {
-        key: "followers",
-        option: { term: "formattedNum(1000)" },
-      },
-      optionalInformation: {
-        key: "details.genres",
-        option: { term: "Pop,Rock" },
-      },
-      description: {
-        key: "details.popularity",
-        option: { term: "80/100" },
-      },
-    });
+    expect(result).toMatchObject(artistDetailsMock);
   });
 
   it("should use defaultImage if image is missing", () => {
@@ -69,7 +54,7 @@ describe("albumDetailsHandler.handleItem", () => {
   it("should transform RawAlbumItem to AlbumDetails including tracks", () => {
     const result = albumDetailsHandler.handleItem(rawAlbumDetailsMock);
 
-    expect(result).toMatchObject({ albumDetailsMock });
+    expect(result).toMatchObject(albumDetailsMock);
   });
 
   it("should use defaultImage if album image is missing", () => {

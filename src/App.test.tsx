@@ -2,12 +2,6 @@ import { render } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { App } from "./App";
 
-vi.mock("./hooks/useTranslate", () => ({
-  useTranslate: () => ({
-    setSavedLanguage: vi.fn(),
-  }),
-}));
-
 vi.mock("./context/search/search-provider", () => ({
   SearchProvider: ({ children }: { children: React.ReactNode }) => (
     <>{children}</>

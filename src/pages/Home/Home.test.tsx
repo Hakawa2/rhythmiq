@@ -18,8 +18,8 @@ vi.mock("@/features/Search/hooks/useSearchController", () => ({
   }),
 }));
 
-vi.mock("@/hooks/useSearchQuery", () => ({
-  useSearchQuery: () => ({
+vi.mock("@/hooks/useFindList", () => ({
+  useFindList: () => ({
     data: homeMock,
     isLoading: false,
     isError: false,

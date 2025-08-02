@@ -7,25 +7,25 @@ import { albumHandler, artistHandler } from "./search-handlers";
 import * as searchService from "./search-service";
 
 describe("search handlers map", () => {
-  const mockSearchSpotify = vi.spyOn(searchService, "searchSpotify");
+  const mocksearchList = vi.spyOn(searchService, "searchList");
 
   afterEach(() => {
     vi.clearAllMocks();
   });
 
-  it("should call searchSpotify with artistHandler in searchArtists", () => {
+  it("should call searchList with artistHandler in searchArtists", () => {
     const query = "radiohead";
     searchArtists(query);
 
-    expect(mockSearchSpotify).toHaveBeenCalledWith(query, "0", artistHandler);
+    expect(mocksearchList).toHaveBeenCalledWith(query, "0", artistHandler);
   });
 
-  it("should call searchSpotify with albumHandler in searchAlbums", () => {
+  it("should call searchList with albumHandler in searchAlbums", () => {
     const query = "metallica";
     const offset = "20";
     searchAlbums(query, offset);
 
-    expect(mockSearchSpotify).toHaveBeenCalledWith(query, offset, albumHandler);
+    expect(mocksearchList).toHaveBeenCalledWith(query, offset, albumHandler);
   });
 
   it("searchFunctionsMap should map 'artists' to searchArtists", () => {

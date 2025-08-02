@@ -3,6 +3,11 @@ import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
 import MainLayout from "./MainLayout";
 
+const setSavedLanguage = vi.fn();
+vi.mock("@/hooks/useTranslate", () => ({
+  useTranslate: () => ({ setSavedLanguage }),
+}));
+
 vi.mock("@/components/Container/Container", () => ({
   Container: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="container">{children}</div>

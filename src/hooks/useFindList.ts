@@ -7,15 +7,15 @@ import {
   type UseQueryResult,
 } from "@tanstack/react-query";
 
-type UseSearchQueryOptions = {
+type useFindListOptions = {
   enabled?: boolean;
 };
 
-export const useSearchQuery = (
+export const useFindList = (
   query: string,
   offset: string = "0",
   type: SearchType,
-  options?: UseSearchQueryOptions
+  options?: useFindListOptions
 ): UseQueryResult<List, Error> & { isEmpty: boolean } => {
   const queryClient = useQueryClient();
 
@@ -36,9 +36,7 @@ export const useSearchQuery = (
   });
 
   const isEmpty =
-    queryResult.isSuccess &&
-    Array.isArray(queryResult.data) &&
-    queryResult.data.length === 0;
+    queryResult.isSuccess && queryResult.data?.items?.length === 0;
 
   return {
     ...queryResult,

@@ -9,7 +9,7 @@ import type { Artists } from "@/types/list-type";
 import type { SearchConfig } from "@/types/search-types";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { albumHandler, artistHandler } from "./search-handlers";
-import { searchSpotify } from "./search-service";
+import { searchList } from "./search-service";
 
 vi.mock("./search-handlers", () => ({
   artistHandler: {
@@ -39,7 +39,7 @@ vi.mock("@/lib/apiSpotify", () => ({
   },
 }));
 
-describe("searchSpotify", () => {
+describe("searchList", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -49,7 +49,7 @@ describe("searchSpotify", () => {
       rawSearchListResponseMock
     );
 
-    await searchSpotify("test", "5", artistHandler);
+    await searchList("test", "5", artistHandler);
 
     expect(apiSpotify.get).toHaveBeenCalledWith("/search", {
       params: {
@@ -65,7 +65,7 @@ describe("searchSpotify", () => {
       rawSearchListResponseMock
     );
 
-    const result = await searchSpotify("test", "0", albumHandler);
+    const result = await searchList("test", "0", albumHandler);
 
     expect(result.items).toEqual(mockAlbum.albums.items);
   });
@@ -79,7 +79,7 @@ describe("searchSpotify", () => {
       data: rawSearchListResponseMock,
     });
 
-    const result = await searchSpotify("test", "0", configNoPagination);
+    const result = await searchList("test", "0", configNoPagination);
 
     expect(result.items.length).toBe(1);
     expect(result.pagination).toBeUndefined();

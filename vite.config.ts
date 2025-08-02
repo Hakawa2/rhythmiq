@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => ({
         "src/router/",
         "src/main.tsx",
         "src/components/ui/",
+        "src/lib",
       ],
     },
   },

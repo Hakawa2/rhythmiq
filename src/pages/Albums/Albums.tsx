@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 export function Albums() {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
-  const { data, isLoading, isError } = useFindDetails("albums", id ?? "");
+  const { data, isLoading, isError } = useFindDetails("albums", id);
 
   return (
     <>

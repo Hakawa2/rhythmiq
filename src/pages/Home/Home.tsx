@@ -6,7 +6,7 @@ import { SearchHandler } from "@/components/SearchHandler/SearchHandler";
 import { useSearchContext } from "@/context/search/useSearchContext";
 import { SearchInput } from "@/features/Search/SearchInput";
 import { useSearchController } from "@/features/Search/hooks/useSearchController";
-import { useSearchQuery } from "@/hooks/useSearchQuery";
+import { useFindList } from "@/hooks/useFindList";
 import type { ListItem } from "@/types/list-type";
 import { scrollTo } from "@/utils/scrollTo.utils";
 import { useEffect } from "react";
@@ -15,7 +15,7 @@ export function Home() {
   const { state, dispatch } = useSearchContext();
   const { type, debouncedSearch, isQueryEnabled } = useSearchController();
 
-  const { data, isLoading, isError, isEmpty } = useSearchQuery(
+  const { data, isLoading, isError, isEmpty } = useFindList(
     debouncedSearch,
     state.offset,
     type,

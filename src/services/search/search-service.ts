@@ -2,7 +2,7 @@ import apiSpotify from "@/lib/apiSpotify";
 import type { List } from "@/types/list-type";
 import type { SearchConfig } from "@/types/search-types";
 
-export const searchSpotify = async <T, K>(
+export const searchList = async <T, K>(
   query: string,
   offset: string = "0",
   config: SearchConfig<T, K>
