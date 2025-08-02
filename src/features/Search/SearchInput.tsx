@@ -23,6 +23,7 @@ export const SearchInput = () => {
             className="cursor-pointer"
             checked={type === "albums"}
             onCheckedChange={toggleType}
+            data-testid="search-type-switch"
           />
           <Label
             htmlFor="search-type"

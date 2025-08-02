@@ -11,6 +11,7 @@ export function Input({ value, setValue, placeholder }: InputProps) {
       placeholder={placeholder}
       value={value}
       onChange={(e) => setValue(e.target.value)}
+      data-testid="search-input"
       className="w-full p-3 rounded-xl text-white font-bold placeholder-gray-400 outline-none ring-2 ring-purple-400"
     />
   );
