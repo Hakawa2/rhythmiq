@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "Node",
+    "noEmit": false,
+    "outDir": "./dist-cypress",
+    "types": ["cypress", "node"]
+  },
+  "include": ["cypress.config.ts", "cypress/**/*"]
+}
