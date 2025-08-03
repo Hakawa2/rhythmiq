@@ -24,6 +24,7 @@ export default defineConfig(({ mode }) => ({
         "src/main.tsx",
         "src/components/ui/",
         "src/lib",
+        "cypress/",
       ],
     },
   },
