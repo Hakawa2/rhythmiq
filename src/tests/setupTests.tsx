@@ -40,7 +40,7 @@ vi.mock("react-i18next", async () => {
   return {
     ...actual,
     useTranslation: () => ({
-      t: (key: string, opts?: any) => {
+      t: (key: string, opts?: Record<string, unknown>) => {
         if (key === "search") return `Search ${opts?.term ?? ""}`;
         if (key === "albums") return "Albums";
         if (key === "clean") return "Clean";

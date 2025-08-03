@@ -37,7 +37,7 @@ describe("MainLayout", () => {
 
   it("renders children via Outlet", async () => {
     vi.mock("react-router-dom", async () => {
-      const actual = await vi.importActual<any>("react-router-dom");
+      const actual = await vi.importActual("react-router-dom");
       return {
         ...actual,
         Outlet: () => <div data-testid="outlet">Outlet Content</div>,

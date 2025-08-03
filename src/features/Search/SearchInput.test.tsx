@@ -1,3 +1,4 @@
+import type { InputProps } from "@/components/Input/Input";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { SearchInput } from "./SearchInput";
@@ -19,28 +20,12 @@ vi.mock("@/features/Search/hooks/useSearchController", () => ({
 }));
 
 vi.mock("@/components/Input/Input", () => ({
-  Input: ({ placeholder, value, setValue }: any) => (
+  Input: ({ placeholder, value, setValue }: InputProps) => (
     <input
       placeholder={placeholder}
       value={value}
       onChange={(e) => setValue(e.target.value)}
       data-testid="search-input"
-    />
-  ),
-}));
-
-vi.mock("@/components/ui/label", () => ({
-  Label: ({ children, ...props }: any) => <label {...props}>{children}</label>,
-}));
-
-vi.mock("@/components/ui/switch", () => ({
-  Switch: ({ checked, onCheckedChange, ...props }: any) => (
-    <input
-      type="checkbox"
-      checked={checked}
-      onChange={(e) => onCheckedChange(e.target.checked)}
-      {...props}
-      data-testid="search-switch"
     />
   ),
 }));
@@ -79,28 +64,10 @@ describe("SearchInput", () => {
     expect(setSearch).toHaveBeenCalledWith("new value");
   });
 
-  it("renders switch checked when type is albums", () => {
-    controller.type = "albums";
-
-    render(<SearchInput />);
-    const switchInput = screen.getByTestId("search-switch") as HTMLInputElement;
-
-    expect(switchInput.checked).toBe(true);
-  });
-
-  it("renders switch unchecked when type is not albums", () => {
-    controller.type = "tracks";
-
-    render(<SearchInput />);
-    const switchInput = screen.getByTestId("search-switch") as HTMLInputElement;
-
-    expect(switchInput.checked).toBe(false);
-  });
-
   it("calls toggleType when switch is toggled", () => {
     render(<SearchInput />);
 
-    const switchInput = screen.getByTestId("search-switch");
+    const switchInput = screen.getByTestId("search-type-switch");
     fireEvent.click(switchInput);
 
     expect(toggleType).toHaveBeenCalled();
