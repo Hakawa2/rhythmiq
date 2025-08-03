@@ -35,6 +35,8 @@ npm install
 npm run test         # Executa todos os testes
 npm run test:ui      # Interface visual dos testes (Vitest UI)
 npm run test:coverage # Relatório de cobertura dos testes
+npm run cypress:open # Abrir a interface do cypress
+npm run cypress:run # Relatório de cobertura dos testes e2e
 ```
 
 Os testes utilizam o [Vitest](https://vitest.dev/) e [Testing Library](https://testing-library.com/).
